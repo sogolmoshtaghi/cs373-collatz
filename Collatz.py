@@ -34,7 +34,7 @@ return true if that succeeds, false otherwise
 # collatz_eval
 # ------------
 
-table = [0] * 1000000
+table = [0] * 1000001
 table[1] = 1
 
 
@@ -55,7 +55,6 @@ return the max cycle length in the range [i, j]
 		cycle = eval_cycle (temp)
 		if cycle > v:
 			v = cycle 
-		table[temp] = cycle
 		temp = temp + 1
     assert v > 0
     return v
@@ -67,14 +66,20 @@ return the cycle length of n recursively
 """
     if n == 1:
         return 1
-    if table[n] != 0 :
+    if n < 1000001 and table[n] != 0 :
         return table[n]
     if  n%2 == 0 :
-        table[n] = 1+eval_cycle(n/2)
-        return table[n]
+        if n<1000001:
+            table[n] = 1+eval_cycle(n/2)
+            return table[n]
+        else :
+            return 1+eval_cycle(n/2)
     else:
-        table[n] = 1+eval_cycle(3*n+1)
-        return table[n]
+        if n < 1000001 :
+            table[n] = 1+eval_cycle(3*n+1)
+            return table[n]
+        else :
+            return 1+eval_cycle(3*n+1)
         
          
         

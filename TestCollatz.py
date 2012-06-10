@@ -38,6 +38,48 @@ class TestCollatz (unittest.TestCase) :
         self.assert_(b == True)
         self.assert_(a[0] == 1)
         self.assert_(a[1] == 10)
+ 
+    def test_read_lowerbound (self) :
+        r = StringIO.StringIO("1 1\n")
+        a = [0, 0]
+        b = collatz_read(r, a)
+        self.assert_(b == True)
+        self.assert_(a[0] == 1)
+        self.assert_(a[1] == 1)
+        
+    def test_read_middle1 (self) :
+        r = StringIO.StringIO("499999 500000\n")
+        a = [0, 0]
+        b = collatz_read(r, a)
+        self.assert_(b == True)
+        self.assert_(a[0] == 499999)
+        self.assert_(a[1] == 500000)
+   
+    def test_read_middle2 (self) :
+        r = StringIO.StringIO("500000 499999\n")
+        a = [0, 0]
+        b = collatz_read(r, a)
+        self.assert_(b == True)
+        self.assert_(a[0] == 500000)
+        self.assert_(a[1] == 499999)
+        
+    def test_read_range (self) :
+        r = StringIO.StringIO("1 999999\n")
+        a = [0, 0]
+        b = collatz_read(r, a)
+        self.assert_(b == True)
+        self.assert_(a[0] == 1)
+        self.assert_(a[1] == 999999)
+     
+    def test_read_end (self) :
+        r = StringIO.StringIO("999999 999999\n")
+        a = [0, 0]
+        b = collatz_read(r, a)
+        self.assert_(b == True)
+        self.assert_(a[0] == 999999)
+        self.assert_(a[1] == 999999)
+        
+        
 
     # ----
     # eval
@@ -66,6 +108,32 @@ class TestCollatz (unittest.TestCase) :
     def test_eval_4 (self) :
         v = collatz_eval(900, 1000)
         self.assert_(v == 174)
+        
+    def test_eval_swap(self) :
+        v = collatz_eval(9, 2)
+        self.assert_(v == 20)
+        
+    def test_eval_mid (self) :
+        v = collatz_eval(499999, 500000)
+        self.assert_(v == 258)
+        
+    def test_eval_mid2 (self) :
+        v = collatz_eval(500000, 499999)
+        self.assert_(v == 258)
+        
+    def test_eval_edgehigh (self) :
+        v = collatz_eval(999999, 999999)
+        self.assert_(v == 259)
+        
+    def test_eval_edgehigh (self) :
+        v = collatz_eval(1, 999999)
+        self.assert_(v == 525)
+        
+
+        
+
+        
+ 
 
     # -----
     # print
