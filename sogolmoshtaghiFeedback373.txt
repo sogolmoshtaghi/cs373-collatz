@@ -1,0 +1,24 @@
+-- Feedback for Project 1--
+
+	 student : Sogol Moshtaghi
+
+Total: 68/70 - 0% = 68/70
+
+==== Scoring Breakdown ===========
+
+Git Repository : 5/5
+
+Issue Tracker : 5/5
+
+Unit Tests : 14/15
+
+Acceptance Tests : 14/15
+
+Implementation : 15/15
+
+Sphere : 5/5
+
+Documentation : 5/5
+
+==== Comment =====================
+1. Please output the results for unit test in .py.out file; 2. Please make sure you get the acceptance test file pushed to public repo, or check whether id before - is your csid; 
